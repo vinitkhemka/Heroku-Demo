@@ -10,7 +10,7 @@ dataset['experience'].fillna(0, inplace=True)
 
 dataset['test_score'].fillna(dataset['test_score'].mean(), inplace=True)
 
-X = dataset.iloc[:, :3]
+X = dataset.iloc[:, :2]
 
 #Converting words to integer values
 def convert_to_int(word):
@@ -28,6 +28,7 @@ y = dataset.iloc[:, -1]
 from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 
+print(X,y)
 #Fitting model with trainig data
 regressor.fit(X, y)
 
@@ -36,4 +37,4 @@ pickle.dump(regressor, open('model.pkl','wb'))
 
 # Loading model to compare the results
 model = pickle.load(open('model.pkl','rb'))
-print(model.predict([[2, 9, 6]]))
+print(model.predict([[2, 9]]))
