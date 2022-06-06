@@ -2,14 +2,14 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 
-app = Flask(__name__)
+appian = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
-@app.route('/')
+@appian.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
+@appian.route('/predict',methods=['POST'])
 def predict():
     '''
     For rendering results on HTML GUI
@@ -24,4 +24,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    appian.run(debug=True)
